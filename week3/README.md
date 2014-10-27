@@ -1,5 +1,5 @@
 #Getting logs from your pulseaudio
-##The hard~~core~~ way
+##The hard ~~core~~ way
 
 First off, pulseaudio does _not_ create logs by default, unless something really bad happens, in which case it will send a log in usually /var/log/messages, but this depends on your distro.
 
@@ -12,5 +12,5 @@ The way I saw one could get logs from pulseaudo is:
 **Warning**: This might ruin your sound and may require extensive killing _or_ at worst a system reboot. But will dump a lot of info about pulse.
 
 ##Note
-	The **one.c** file in this directory will just create a few logs in your default log file and is mostly unrelated to the topic mentioned above.
+The **one.c** file in this directory will just create a few logs in your default log file and is mostly unrelated to the topic mentioned above.
 
