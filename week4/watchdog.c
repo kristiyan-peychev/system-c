@@ -6,11 +6,11 @@
 #include <stdlib.h>
 
 int main(int argc, const char *argv[]) {
-	if (argc != 2) {
-		fprintf(stderr, "FUCK AWf\n");
+	if (argc < 2) {
+		fprintf(stderr, "Please specify a command to execute\n");
 		return 1;
 	}
-	daemon(0, 0);
+	daemon(0, 0); /* Daemonise the process so it runs in the background */
 	pid_t ffdf;
 	int f = 0;
 	char **args = (char **) malloc((argc - 1) * sizeof(char *)); 
@@ -20,11 +20,11 @@ int main(int argc, const char *argv[]) {
 	}
 	*(args + f) = (char *) 0;
 	ffdf = fork();
-	if (!ffdf) {
+	if (!ffdf) { /* Child */
 		execvp(*args, args); /* Execute the command, we're leaking memory btw */
 		perror("execvp"); /* This part will execute if the execute should fail */
 		exit(EXIT_FAILURE);
-	} else {
+	} else { /* Parent */
 		printf("To kill the daemon kill pid %d\n", getpid());
 		wait(&f);
 		if (WIFEXITED(f)) {
