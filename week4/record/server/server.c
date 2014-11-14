@@ -19,7 +19,7 @@
 
 #define BACKLOG 10	 // how many pending connections queue will hold
 
-#define BUF_SIZE 64
+#define BUF_SIZE 16
 
 void sigchld_handler(int s)
 {
@@ -122,7 +122,8 @@ int main(void)
 				perror("send");
 			*/
 			while (recv(new_fd, buf, BUF_SIZE, 0) != -1) 
-				printf("%s", buf);
+				//printf("%s", buf);
+				write(STDOUT_FILENO, buf, BUF_SIZE);
 			close(new_fd);
 			exit(0);
 		}
