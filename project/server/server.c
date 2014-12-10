@@ -1,3 +1,7 @@
+/*
+ * ** server.c -- a stream socket server demo
+ * */
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
@@ -112,12 +116,13 @@ int main(void)
 				s, sizeof s);
 		printf("server: got connection from %s\n", s);
 
-		if (!fork()) { /* child */
-			close(sockfd); /* child doesn't need the listener */
+		if (!fork()) { // this is the child process
+			close(sockfd); // child doesn't need the listener
 			/*if (send(new_fd, "Hello, world!", 13, 0) == -1) // This here does all the work
 				perror("send");
 			*/
 			while (recv(new_fd, buf, BUF_SIZE, 0) != -1) 
+				//printf("%s", buf);
 				write(STDOUT_FILENO, buf, BUF_SIZE);
 			close(new_fd);
 			exit(0);

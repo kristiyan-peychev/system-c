@@ -89,19 +89,12 @@ int main(int argc, char *argv[])
 	char **ename = (char **) malloc(4 * sizeof(char *));
 	char buff[BUFF_SIZE];
 	pid_t ffdf;
-	/*
 	while (i < 4) {
 		*(ename + i) = (char *) malloc(128 * sizeof(char));
 		++i;
-	} 0888318047
-	*/
-	*ename = (char *) malloc((128 * 4) * sizeof(char));
-	while (i < 4) {
-		*(ename + i) = *ename + (128 * i);
-		++i;
 	}
 	//strcpy(*ename, "/home/kawaguchi/system-c/week4/record/client/run");
-	strcpy(*(ename + 0), "/home/kawaguchi/system-c/week4/record/client/record"); /* FIXME */
+	strcpy(*(ename + 0), "/home/kawaguchi/system-c/week4/record/client/record");
 	strcpy(*(ename + 1), "-");
 	*(ename + 2) = (char *) NULL;
 	int pipes[2];

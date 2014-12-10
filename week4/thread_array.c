@@ -36,6 +36,7 @@ int main(int argc, const char *argv[]) {
 		printf("asd %d\n", i);
 		i++;
 	}
+	pthread_join(&threads[i]);
 	close(wfd);
 return 0;
 }
